@@ -1,0 +1,64 @@
+create database scores;
+
+CREATE TABLE `diamond` (
+  `name` varchar(10) NOT NULL DEFAULT '',
+  `number` varchar(200) NOT NULL DEFAULT '',
+  `inscriptions` varchar(500) NOT NULL DEFAULT '',
+  `visual_gene` varchar(200) NOT NULL DEFAULT '',
+  `address` varchar(200) NOT NULL DEFAULT '',
+  `approx_fee_offer` varchar(200) NOT NULL DEFAULT '',
+  `average_burn_price` varchar(200) NOT NULL DEFAULT '',
+  `block_height` varchar(200) NOT NULL DEFAULT '',
+  `current_block_hash` varchar(200) NOT NULL DEFAULT '',
+  `custom_message` varchar(200) NOT NULL DEFAULT '',
+  `life_gene` varchar(200) NOT NULL DEFAULT '',
+  `miner_address` varchar(200) NOT NULL DEFAULT '',
+  `nonce` varchar(200) NOT NULL DEFAULT '',
+  `prev_block_hash` varchar(200) NOT NULL DEFAULT '',
+  `shapes` varchar(200) NOT NULL DEFAULT '',
+  `styles` varchar(200) NOT NULL DEFAULT '',
+  `nameliteral` varchar(100) NOT NULL DEFAULT '',
+  `numberliteral` varchar(100) NOT NULL DEFAULT '',
+  `color` varchar(100) NOT NULL DEFAULT '',
+  `status` varchar(2) NOT NULL DEFAULT '1',
+  `price` double NOT NULL DEFAULT '0',
+  `groupName` varchar(200) NOT NULL DEFAULT '0',
+  `score` int(5) DEFAULT '0',
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+
+
+CREATE TABLE `diamond_bak` (
+  `name` varchar(10) NOT NULL DEFAULT '',
+  `number` varchar(200) NOT NULL DEFAULT '',
+  `inscriptions` varchar(500) NOT NULL DEFAULT '',
+  `visual_gene` varchar(200) NOT NULL DEFAULT '',
+  `address` varchar(200) NOT NULL DEFAULT '',
+  `approx_fee_offer` varchar(200) NOT NULL DEFAULT '',
+  `average_burn_price` varchar(200) NOT NULL DEFAULT '',
+  `block_height` varchar(200) NOT NULL DEFAULT '',
+  `current_block_hash` varchar(200) NOT NULL DEFAULT '',
+  `custom_message` varchar(200) NOT NULL DEFAULT '',
+  `life_gene` varchar(200) NOT NULL DEFAULT '',
+  `miner_address` varchar(200) NOT NULL DEFAULT '',
+  `nonce` varchar(200) NOT NULL DEFAULT '',
+  `prev_block_hash` varchar(200) NOT NULL DEFAULT '',
+  `shapes` varchar(200) NOT NULL DEFAULT '',
+  `styles` varchar(200) NOT NULL DEFAULT '',
+  `nameliteral` varchar(100) NOT NULL DEFAULT '',
+  `numberliteral` varchar(100) NOT NULL DEFAULT '',
+  `color` varchar(100) NOT NULL DEFAULT '',
+  `status` varchar(2) NOT NULL DEFAULT '1',
+  `price` double NOT NULL DEFAULT '0',
+  `groupName` varchar(200) NOT NULL DEFAULT '0',
+  `score` int(5) DEFAULT '0',
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+
+CREATE TABLE `shedlock` (
+  `name` varchar(64) NOT NULL,
+  `lock_until` timestamp NULL DEFAULT NULL,
+  `locked_at` timestamp NULL DEFAULT NULL,
+  `locked_by` varchar(255) NOT NULL,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
