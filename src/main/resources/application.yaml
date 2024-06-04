@@ -1,5 +1,5 @@
 server:
-  port: 8820
+  port: 81
   servlet:
     context-path: /hacds
 #  port: 8820
@@ -30,8 +30,6 @@ spring:
       maxPoolPreparedStatementPerConnectionSize: 20
       filters: stat,wall,slf4j
       connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
-
-
 
 mybatis:
   mapper-locations:
@@ -64,6 +62,7 @@ diamond:
 #     tradeurl : "http://127.0.0.1:3377/query?action=scan_coin_transfers&unitmei=1&txposi=1&height="
 
 task:
+    updateDiamondTotal: "0 0 0/1 * * ?"
     updateDiamond: "0 0/1 * * * ?"
     refresh: "0 0/5 * * * ?"
     remindemail: "0 0 8,20 * * ?"
