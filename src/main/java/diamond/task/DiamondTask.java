@@ -167,7 +167,7 @@ public class DiamondTask {
         return array;
     }
 
-
+    @Scheduled(cron = "${task.updateDiamondTotal}")
     @PostConstruct
     @RequestMapping("/query")
     @Async
