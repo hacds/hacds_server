@@ -47,8 +47,8 @@ public class BusinessController {
 
 
     @PostMapping("/queryDiamondByAddress")
-    public JSONObject queryDiamondByAddress(@RequestBody String address) {
-        return diamondDetailService.queryDiamondByAddress(address);
+    public JSONObject queryDiamondByAddress(@RequestBody JSONObject json) {
+        return diamondDetailService.queryDiamondByAddress(json.getString("address"));
     }
 
     @RequestMapping("/queryDiamondTotal")

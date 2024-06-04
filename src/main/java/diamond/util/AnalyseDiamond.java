@@ -267,7 +267,7 @@ public class AnalyseDiamond {
         String name = diamond.getName();
         String number = diamond.getNumber();
         StringBuffer sb = new StringBuffer();
-        String[] array = nameliteral.split(",");
+        String[] array = numberliteral.split(",");
         for (int i = 0; i < array.length; i++) {
             if (array[i].equals("Single num")) {
                 if (Integer.parseInt(number) < 10) {
