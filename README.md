@@ -1,25 +1,33 @@
 
-# 交易所RPC API 文档
+# Exchange RPC API
 
-## 一、此文档包含hacds钻石权重比例、用户地址对应钻石信息、钻石数量接口的调用规范及示例。
+Documentation
 
-## 二、部署安装：
+## 1、
 
- **1、** **安装mysql 5.5****版本以上的数据库**
+## This document includes the calling specifications and
 
- **2、** **在mysql****中执行建表语句--createsql.txt**
+examples of the hacds diamond weight ratio, diamond information corresponding
+to the user's address, and the number of diamonds interface.
 
- **3、** **配置文件说明 application.yaml**
+## 2. Deployment and Installation:
 
- **server:
+**1.Install MySQL database version 5.5 or
+above.**
 
-  port: 81  ##**  **访问端口
+**2.Execute the table creation statement
+in MySQL -- createsql.txt**
+
+**3.Configuration file instructions
+application.yaml:server:
+
+  port: 81  ##Access port
 
   servlet:
 
-    context-path: /hacds  ##****访问前缀**
+    context-path: /hacds  ## Access prefix**
 
- **datasource:
+**datasource:
 
     mysql:
 
@@ -27,24 +35,29 @@
 com.mysql.jdbc.Driver
 
     url:
-jdbc:mysql://${MYSQLIP:127.0.0.1:3306}/${MYSQLNAME:score}?useSSL=false&characterEncoding=utf8&allowPublicKeyRetrieval=true  ##**  **数据库地址及作用域
+jdbc:mysql://${MYSQLIP:127.0.0.1:3306}/${MYSQLNAME:score}?useSSL=false&characterEncoding=utf8&allowPublicKeyRetrieval=true  ### Database address and scope**
 
-    username: root  ##**  **数据库账号
+**    username: root  ## Database username
 
-    password: root  ##** **数据库密码
+    username: root  ## Database username
+
+    password: root  ## Database password
 
     type:
 com.alibaba.druid.pool.DruidDataSource**
 
- **4、** **启动程序 java -jar xxx.jar**
+ **1、** **Start
+the program java -jar xxx.jar**
 
-## 三、接口调用示例
+## 3.Interface Call Examples
 
-### 1、获取所有钻石hacds权重比例
+### 1、Get all
+
+hacds diamond weight ratios
 
 Url：POST: [http://IP:PORT/hacds/diamond/queryDiamondByAddress](http://IP:PORT/hacds/diamond/queryDiamondByAddress)
 
-    返回示例：
+    Return Example:
 
 {
 
@@ -60,19 +73,25 @@ Url：POST: [http://IP:PORT/hacds/diamond/queryDiamondByAddress](http://IP:PORT/
 
 }
 
-### 2、获取钻石数量
+### 2、Get the
+
+number of diamonds
 
 URL：GET:http://IP:PORT/hacds/diamond/queryDiamondTotal
 
-返回示例：92176
+ **Return Example** :92176
 
-### 3、通过用户地址获取hacds钻石
+### 3、Get hacds
+
+diamonds by user address
 
  URL：POST[http://IP:PORT/hacds/diamond/queryDiamondByAddress](http://IP:PORT/hacds/diamond/queryDiamondByAddress)
 
-入参：{"address":"1LagopcgubBRVEDaf8sVC2ZXFkTFG3H1hZ"}
+ **Input
+Parameter** ：{"address":"1LagopcgubBRVEDaf8sVC2ZXFkTFG3H1hZ"}
 
-返回参数：
+ **Return
+Parameters** ：
 
 {
 
