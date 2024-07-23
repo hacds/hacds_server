@@ -55,7 +55,7 @@ the program java -jar xxx.jar**
 
 hacds diamond weight ratios
 
-Url：POST: [http://IP:PORT/hacds/diamond/queryDiamondByAddress](http://IP:PORT/hacds/diamond/queryDiamondByAddress)
+Url：POST: [http://IP:PORT/hacds/diamond/queryDiamondsHacds](http://IP:PORT/hacds/diamond/queryDiamondByAddress)
 
     Return Example:
 
