@@ -7,6 +7,7 @@ import diamond.dto.Diamond;
 import org.apache.ibatis.annotations.Mapper;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 @Mapper
@@ -24,6 +25,6 @@ public interface DiamondMapper {
 
     void insertDiamondDetails(List<Diamond> list);
 
-    JSONObject queryDiamondsHacds();
+    JSONObject queryDiamondsHacds(HashMap map);
 
 }

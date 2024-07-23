@@ -17,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -107,8 +108,8 @@ public class DiamondDetailsServiceImpl implements DiamondDetailService {
     }
 
     @Override
-    public JSONObject queryDiamondsHacds() {
-        return diamondMapper.queryDiamondsHacds();
+    public JSONObject queryDiamondsHacds(HashMap map) {
+        return diamondMapper.queryDiamondsHacds(map);
     }
 
     public Diamond getDiamondDetailByName(String name){

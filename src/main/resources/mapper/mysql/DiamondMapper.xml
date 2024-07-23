@@ -3,13 +3,22 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="diamond.mapper.DiamondMapper">
 
-    <select id="queryDiamondsHacds"  resultType="com.alibaba.fastjson.JSONObject">
+    <select id="queryDiamondsHacds" parameterType="java.util.Map" resultType="com.alibaba.fastjson.JSONObject">
         select sum(score)*100000000 hacds from diamond
+        <where>
+            <if test="address != null and address != ''">
+                address = #{address}
+            </if>
+        </where>
     </select>
 
     <update id="synchronizationDiamond"
     >
-        REPLACE INTO diamond (select a.* from diamond_bak a left outer join diamond b on a.name=b.name and a.number = b.number and
+        REPLACE INTO diamond ( select a.name ,a.`number`,a.inscriptions ,a.visual_gene ,a.address ,a.approx_fee_offer ,a.average_burn_price ,a.block_height
+        ,a.current_block_hash ,(case when b.custom_message is not null then b.custom_message else a.custom_message end) custom_message  ,
+        a.life_gene ,a.miner_address ,a.nonce ,a.prev_block_hash ,a.shapes ,a.styles ,a.nameliteral ,a.numberliteral ,a.color ,
+        (case when b.status is not null then b.status else a.status end) status ,(case when b.price <![CDATA[ <> ]]> 0 then b.price else a.price end) price ,(case when b.groupName is not null then b.groupName else a.groupName end) groupName  ,a.score
+        from diamond_bak a left outer join diamond b on a.name=b.name and a.number = b.number)REPLACE INTO diamond (select a.* from diamond_bak a left outer join diamond b on a.name=b.name and a.number = b.number and
         (a.inscriptions != b.inscriptions or a.address != b.address))
     </update>
 

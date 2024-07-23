@@ -3,6 +3,7 @@ package diamond.service;
 import com.alibaba.fastjson.JSONObject;
 import diamond.dto.Diamond;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface DiamondDetailService {
@@ -25,6 +26,6 @@ public interface DiamondDetailService {
 
     void insertDiamondDetails(List<Diamond> list);
 
-    JSONObject queryDiamondsHacds();
+    JSONObject queryDiamondsHacds(HashMap map);
 
 }
