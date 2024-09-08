@@ -1,0 +1,69 @@
+server:
+  port: 81
+  servlet:
+    context-path: /hacds
+#  port: 8820
+spring:
+  application:
+    name: diamond
+
+  datasource:
+    mysql:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://${MYSQLIP:127.0.0.1:3306}/${MYSQLNAME:score}?useSSL=false&characterEncoding=utf8&allowPublicKeyRetrieval=true
+#      url: jdbc:mysql://${MYSQLIP:127.0.0.1:3309}/${MYSQLNAME:scores}?useSSL=false&characterEncoding=utf8&allowPublicKeyRetrieval=true
+      username: root
+      password: root
+      type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 30000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      filters: stat,wall,slf4j
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+
+mybatis:
+  mapper-locations:
+  - classpath:mapper/*Mapper.xml
+  configuration:
+    multiple-result-sets-enabled: true
+    map-underscore-to-camel-case: true
+    cache-enabled: true
+    lazy-loading-enabled: true
+
+logging:
+  level:
+    root: ${LOG_LEVEL:info}
+
+
+diamond:
+     nameurl: "http://127.0.0.1:3338/query?action=diamond&name="
+     numberurl: "http://127.0.0.1:8083/query?action=diamond&number="
+     totalurl: "http://127.0.0.1:8083/query?action=total_supply"
+     tradeurl : "http://127.0.0.1:8083/query?action=scan_coin_transfers&unitmei=1&txposi=1&height="
+     lastblock : "http://127.0.0.1:3338/query?action=lastblock"
+     order : "http://127.0.0.1:3338/query?action=blockintro&gettrshxs=true&id="
+     orderdetails : "http://127.0.0.1:3338/query?action=trsintro&id="
+     addressurl: "https://explorer.hacash.org/api/ranking/diamonds?address="
+
+
+#     nameurl: "http://127.0.0.1:3338/query?action=diamond&name="
+#     numberurl: "http://127.0.0.1:3377/query?action=diamond&number="
+#     totalurl: "http://127.0.0.1:3377/query?action=total_supply"
+#     tradeurl : "http://127.0.0.1:3377/query?action=scan_coin_transfers&unitmei=1&txposi=1&height="
+
+task:
+    updateDiamondTotal: "0 0 0/1 * * ?"
+    updateDiamond: "0 0/1 * * * ?"
+    refresh: "0 0/5 * * * ?"
+    remindemail: "0 0 8,20 * * ?"
+    backtransfer: "0 0/1 * * * ?"

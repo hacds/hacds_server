@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="diamond.mapper.DiamondMapper">
+
+    <select id="queryDiamondsHacds" parameterType="java.util.Map" resultType="com.alibaba.fastjson.JSONObject">
+        select sum(score)*100000000 hacds from diamond
+        <where>
+            <if test="address != null and address != ''">
+                address = #{address}
+            </if>
+        </where>
+    </select>
+
+    <update id="synchronizationDiamond">
+        REPLACE INTO diamond ( select a.name ,a.`number`,a.inscriptions ,a.visual_gene ,a.address ,a.approx_fee_offer ,a.average_burn_price ,a.block_height
+        ,a.current_block_hash ,(case when b.custom_message is not null then b.custom_message else a.custom_message end) custom_message  ,
+        a.life_gene ,a.miner_address ,a.nonce ,a.prev_block_hash ,a.shapes ,a.styles ,a.nameliteral ,a.numberliteral ,a.color ,
+        (case when b.status is not null then b.status else a.status end) status ,(case when b.price <![CDATA[ <> ]]> 0 then b.price else a.price end) price ,(case when b.groupName is not null then b.groupName else a.groupName end) groupName  ,a.score
+        from diamond_bak a left outer join diamond b on a.name=b.name and a.number = b.number)
+    </update>
+
+    <delete id="filterDiamond">
+        delete from diamond where inscriptions not like '%hacds%'
+    </delete>
+
+    <insert id="replaceIntoDiamond"  parameterType="diamond.dto.Diamond">
+        REPLACE INTO diamond
+        (name,number,inscriptions,visual_gene,address,approx_fee_offer,average_burn_price,block_height,
+        current_block_hash,custom_message,life_gene,miner_address,nonce,prev_block_hash,nameliteral,numberliteral,shapes,styles,status,price,groupName,color,score
+        )
+        VALUES
+        <foreach collection ="list" item="diamond" separator =",">
+            (#{diamond.name},
+            #{diamond.number},
+            #{diamond.inscriptions},
+            #{diamond.visualGene},
+            #{diamond.address},
+            #{diamond.approxFeeOffer},
+            #{diamond.averageBurnPrice},
+            #{diamond.blockHeight},
+            #{diamond.currentBlockHash},
+            #{diamond.customMessage},
+            #{diamond.lifeGene},
+            #{diamond.minerAddress},
+            #{diamond.nonce},
+            #{diamond.prevBlockHash},
+            #{diamond.nameliteral},
+            #{diamond.numberliteral},
+            #{diamond.shapes},
+            #{diamond.styles},
+            #{diamond.status},
+            #{diamond.price},
+            #{diamond.groupName},
+            #{diamond.color},
+            #{diamond.score}
+            )
+        </foreach >
+    </insert>
+
+    <delete id="deleteFromBak">
+        delete from diamond_bak
+    </delete>
+
+    <insert id="insertDiamondDetails"  parameterType="diamond.dto.Diamond">
+        INSERT INTO diamond_bak
+        (name,number,inscriptions,visual_gene,address,approx_fee_offer,average_burn_price,block_height,
+        current_block_hash,custom_message,life_gene,miner_address,nonce,prev_block_hash,nameliteral,numberliteral,shapes,styles,status,price,groupName,color,score
+        )
+        VALUES
+        <foreach collection ="list" item="diamond" separator =",">
+            (#{diamond.name},
+            #{diamond.number},
+            #{diamond.inscriptions},
+            #{diamond.visualGene},
+            #{diamond.address},
+            #{diamond.approxFeeOffer},
+            #{diamond.averageBurnPrice},
+            #{diamond.blockHeight},
+            #{diamond.currentBlockHash},
+            #{diamond.customMessage},
+            #{diamond.lifeGene},
+            #{diamond.minerAddress},
+            #{diamond.nonce},
+            #{diamond.prevBlockHash},
+            #{diamond.nameliteral},
+            #{diamond.numberliteral},
+            #{diamond.shapes},
+            #{diamond.styles},
+            #{diamond.status},
+            #{diamond.price},
+            #{diamond.groupName},
+            #{diamond.color},
+            #{diamond.score}
+            )
+        </foreach >
+    </insert>
+
+</mapper>
