@@ -1,0 +1,95 @@
+/*
+MySQL - 5.5.5-10.6.16-MariaDB-0ubuntu0.22.04.1 : Database - scores
+*********************************************************************
+*/
+
+/*!40101 SET NAMES utf8 */;
+
+/*!40101 SET SQL_MODE=''*/;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`scores` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
+
+USE `scores`;
+
+/*Table structure for table `diamond` */
+
+DROP TABLE IF EXISTS `diamond`;
+
+CREATE TABLE `diamond` (
+  `name` varchar(10) NOT NULL DEFAULT '',
+  `number` varchar(200) NOT NULL DEFAULT '',
+  `inscriptions` varchar(500) NOT NULL DEFAULT '',
+  `visual_gene` varchar(200) NOT NULL DEFAULT '',
+  `address` varchar(200) NOT NULL DEFAULT '',
+  `approx_fee_offer` varchar(200) NOT NULL DEFAULT '',
+  `average_burn_price` varchar(200) NOT NULL DEFAULT '',
+  `block_height` varchar(200) NOT NULL DEFAULT '',
+  `current_block_hash` varchar(200) NOT NULL DEFAULT '',
+  `custom_message` varchar(200) NOT NULL DEFAULT '',
+  `life_gene` varchar(200) NOT NULL DEFAULT '',
+  `miner_address` varchar(200) NOT NULL DEFAULT '',
+  `nonce` varchar(200) NOT NULL DEFAULT '',
+  `prev_block_hash` varchar(200) NOT NULL DEFAULT '',
+  `shapes` varchar(200) NOT NULL DEFAULT '',
+  `styles` varchar(200) NOT NULL DEFAULT '',
+  `nameliteral` varchar(100) NOT NULL DEFAULT '',
+  `numberliteral` varchar(100) NOT NULL DEFAULT '',
+  `color` varchar(100) NOT NULL DEFAULT '',
+  `status` varchar(2) NOT NULL DEFAULT '1',
+  `price` double NOT NULL DEFAULT 0,
+  `groupName` varchar(200) NOT NULL DEFAULT '0',
+  `score` int(5) DEFAULT 0,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Table structure for table `diamond_bak` */
+
+DROP TABLE IF EXISTS `diamond_bak`;
+
+CREATE TABLE `diamond_bak` (
+  `name` varchar(10) NOT NULL DEFAULT '',
+  `number` varchar(200) NOT NULL DEFAULT '',
+  `inscriptions` varchar(500) NOT NULL DEFAULT '',
+  `visual_gene` varchar(200) NOT NULL DEFAULT '',
+  `address` varchar(200) NOT NULL DEFAULT '',
+  `approx_fee_offer` varchar(200) NOT NULL DEFAULT '',
+  `average_burn_price` varchar(200) NOT NULL DEFAULT '',
+  `block_height` varchar(200) NOT NULL DEFAULT '',
+  `current_block_hash` varchar(200) NOT NULL DEFAULT '',
+  `custom_message` varchar(200) NOT NULL DEFAULT '',
+  `life_gene` varchar(200) NOT NULL DEFAULT '',
+  `miner_address` varchar(200) NOT NULL DEFAULT '',
+  `nonce` varchar(200) NOT NULL DEFAULT '',
+  `prev_block_hash` varchar(200) NOT NULL DEFAULT '',
+  `shapes` varchar(200) NOT NULL DEFAULT '',
+  `styles` varchar(200) NOT NULL DEFAULT '',
+  `nameliteral` varchar(100) NOT NULL DEFAULT '',
+  `numberliteral` varchar(100) NOT NULL DEFAULT '',
+  `color` varchar(100) NOT NULL DEFAULT '',
+  `status` varchar(2) NOT NULL DEFAULT '1',
+  `price` double NOT NULL DEFAULT 0,
+  `groupName` varchar(200) NOT NULL DEFAULT '0',
+  `score` int(5) DEFAULT 0,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Table structure for table `shedlock` */
+
+DROP TABLE IF EXISTS `shedlock`;
+
+CREATE TABLE `shedlock` (
+  `name` varchar(64) NOT NULL DEFAULT '',
+  `lock_until` timestamp NULL DEFAULT NULL,
+  `locked_at` timestamp NULL DEFAULT NULL,
+  `locked_by` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
